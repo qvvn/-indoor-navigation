@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indoor Navigation - Berufsschule</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'><text y='32' font-size='32'>🏫</text></svg>">
+    
+    <!-- Meta für Handy-Kompatibilität -->
+    <meta name="theme-color" content="#1e2022">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+</head>
+<body>
+    <!-- App Container -->
+    <div class="container">
+        
+        <!-- Titel -->
+        <h1>🏫 Indoor Navigation</h1>
+        <p>Finde deinen Weg durch unsere Berufsschule</p>
+        
+        <!-- Aktueller Standort -->
+        <div class="section">
+            <h2>📍 Dein Standort</h2>
+            <div id="current-room" class="status-display">
+                <strong>📱 Noch nicht bekannt</strong><br>
+                <small style="color: #666;">Scanne einen QR-Code (Kamera-App) um direkt hierher zu kommen!</small>
+            </div>
+        </div>
+        
+        <!-- Zielauswahl -->
+        <div class="section">
+            <h2>🎯 Wohin möchtest du?</h2>
+            <select id="destination-select" class="select">
+                <option value="">-- Lade Räume... --</option>
+            </select>
+        </div>
+        
+        <!-- Route berechnen Button -->
+        <div class="section">
+            <button id="find-route" class="btn primary" disabled>
+                🗺️ Route berechnen
+            </button>
+        </div>
+        
+        <!-- Route-Anzeige -->
+        <div class="section">
+            <h2>🗺️ Deine Route</h2>
+            <div id="route-display" class="route-section">
+                Wähle erst Start und Ziel aus.
+            </div>
+        </div>
+        
+        <!-- Debug-Info -->
+        <div class="section debug">
+            <details>
+                <summary>🔧 Debug-Funktionen</summary>
+                <button onclick="simuliereQRScan('R136')" class="btn debug">Test R136</button>
+                <button onclick="simuliereQRScan('R132')" class="btn debug">Test R132</button>
+                <button onclick="resetApp()" class="btn debug">App Reset</button>
+                <button onclick="zeigeAlleRaeume()" class="btn debug">Zeige Räume</button>
+            </details>
+        </div>
+    </div>
+
+    <!-- Scripte -->
+    <script src="database-api.js"></script>
+    <script src="navigation-db.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
